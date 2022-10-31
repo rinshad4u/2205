@@ -1,6 +1,5 @@
 {
 	"commerceSuiteVersion": "2205",
-	"useCloudExtensionPack": true,
 	"enableImageProcessingService": true,
 	"extensions": [
 "cmsbackoffice",
