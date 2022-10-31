@@ -1,0 +1,261 @@
+{
+	"commerceSuiteVersion": "1912",
+	"useCloudExtensionPack": true,
+	"extensions": [
+"cmsbackoffice",
+		"adaptivesearchsolr",
+"adaptivesearchbackoffice",
+"adaptivesearchsamplesaddon",
+"adaptivesearchwebservices",
+"b2bcommercebackoffice",
+"solrfacetsearchbackoffice",
+"yacceleratorbackoffice",
+"yacceleratorinitialdata",
+"yacceleratorfulfilmentprocess",
+"ycommercewebservices",
+"orderselfserviceaddon",
+"powertoolsstore",
+"solrserver",
+"acceleratorwebservicesaddon",
+"b2bacceleratoraddon",
+"commerceorgsamplesaddon",
+"b2bpunchoutaddon",
+"secureportaladdon",
+"savedorderformsoccaddon",
+"b2boccaddon",
+"accountsummaryaddon",
+"assistedservicestorefront",
+"assistedservicewebservices",
+"captchaaddon",
+"customerticketingaddon",
+"customersupportbackoffice",
+"rulebuilderbackoffice",
+"couponbackoffice",
+"droolsruleengineservices",
+"couponfacades",
+"couponservices",
+"promotionenginesamplesaddon",
+"textfieldconfiguratortemplatebackoffice",
+"textfieldconfiguratortemplateaddon",
+"cmswebservices",
+"smarteditwebservices",
+"permissionswebservices",
+"smarteditaddon",
+"cmssmartedit",
+"cmsbackoffice",
+"previewwebservices",
+"cmssmarteditwebservices",
+"cmsoccaddon",
+"previewpersonalizationweb",
+"personalizationcmsweb",
+"personalizationsmartedit",
+"personalizationpromotionssmartedit",
+"personalizationsampledataaddon",
+"personalizationpromotionssampledataaddon",
+"personalizationpromotions",
+"personalizationpromotionsweb",
+"personalizationservicesbackoffice",
+"personalizationpromotionsbackoffice",
+"personalizationcmsbackoffice",
+"personalizationsearchbackoffice",
+"personalizationsearchsmartedit",
+"personalizationsearchweb",
+"personalizationsearchsamplesaddon",
+"consignmenttrackingaddon",
+"consignmenttrackingmock",
+"consignmenttrackingbackoffice",
+"pcmbackofficesamplesaddon",
+"configurablebundleaddon",
+"consignmenttrackingoccaddon",
+"outboundservices",
+"odata2webservices",
+"odata2webservicesfeaturetests",
+"kymaintegrationbackoffice",
+"yb2bacceleratorstorefront"
+	],
+	"useConfig": {
+		"properties": [
+			{
+				"location": "/config/local.properties",
+				"persona": "production"
+			}
+		],
+		"extensions": {
+			"location": "/config/localextensions.xml"
+		}
+	},
+	"storefrontAddons": [
+		{
+			"addon": "smarteditaddon",
+			"storefront": "yb2bacceleratorstorefront",
+			"template": "yacceleratorstorefront"
+		}
+	],
+	"properties": [
+		{
+			"key": "regioncache.entityregion.size",
+			"value": "#{100000 * ( T(java.lang.Runtime).runtime.maxMemory() / ( 1024 * 1024 * 1024 * 4.0 ))}"
+		},
+		{
+			"key": "regioncache.querycacheregion.size",
+			"value": "#{20000 * ( T(java.lang.Runtime).runtime.maxMemory() / ( 1024 * 1024 * 1024 * 4.0 ))}"
+		},
+		{
+			"key": "regioncache.sessionregion.size",
+			"value": "#{50000 * ( T(java.lang.Runtime).runtime.maxMemory() / ( 1024 * 1024 * 1024 * 4.0 ))}"
+		},
+		{
+			"key": "regioncache.adaptivesearchregion.size",
+			"value": "#{2000 * ( T(java.lang.Runtime).runtime.maxMemory() / ( 1024 * 1024 * 1024 * 4.0 ))}"
+		},
+		{
+			"key": "regioncache.cmsregion.size",
+			"value": "#{20000 * ( T(java.lang.Runtime).runtime.maxMemory() / ( 1024 * 1024 * 1024 * 4.0 ))}"
+		},
+		{
+			"key": "regioncache.typesystemregion.size",
+			"value": "#{50000 * ( T(java.lang.Runtime).runtime.maxMemory() / ( 1024 * 1024 * 1024 * 4.0 ))}"
+		},
+		{
+			"key": "apiregistry.cache.maxentries",
+			"value": "#{5000 * ( T(java.lang.Runtime).runtime.maxMemory() / ( 1024 * 1024 * 1024 * 4.0 ))}"
+		}
+	],
+	"aspects": [
+		{
+			"name": "api",
+			"properties": [
+				{
+					"key":"task.engine.loadonstartup",
+					"value":"false"
+				}
+			]
+		},
+		{
+			"name": "backgroundProcessing",
+			"properties": [
+				{
+					"key": "task.engine.loadonstartup",
+					"value": "true"
+				}
+			],
+			"webapps": [
+				{
+					"name": "hac",
+					"contextPath": "/hac"
+				}
+			]
+		},
+		{
+			"name": "backoffice",
+			"properties": [
+				{
+					"key": "task.engine.loadonstartup",
+					"value": "false"
+				}
+			],
+			"webapps": [
+				{
+					"name": "hac",
+					"contextPath": "/hac"
+				},
+				{
+					"name": "mediaweb",
+					"contextPath": "/medias"
+				},
+				{
+					"name": "backoffice",
+					"contextPath": "/backoffice"
+				}
+			]
+		},
+		{
+			"name": "accstorefront",
+			"properties": [
+				{
+					"key": "spring.session.enabled",
+					"value": "true"
+				},
+				{
+					"key": "spring.session.yacceleratorstorefront.save",
+					"value": "async"
+				},
+				{
+					"key": "spring.session.yacceleratorstorefront.cookie.name",
+					"value": "JSESSIONID"
+				},
+				{
+					"key": "spring.session.yacceleratorstorefront.cookie.path",
+					"value": "/"
+				},
+				{
+					"key": "storefrontContextRoot",
+					"value": ""
+				},
+				{
+					"key": "task.engine.loadonstartup",
+					"value": "false"
+				}
+			],
+			"webapps": [
+				{
+					"name": "yb2bacceleratorstorefront",
+					"contextPath": ""
+				},
+				{
+					"name": "mediaweb",
+					"contextPath": "/medias"
+				},
+				{
+					"name": "smartedit",
+					"contextPath": "/smartedit"
+				},
+				{
+					"name": "smarteditwebservices",
+					"contextPath": "/smarteditwebservices"
+				},
+				{
+					"name": "cmssmartedit",
+					"contextPath": "/cmssmartedit"
+				},
+				{
+					"name": "cmssmarteditwebservices",
+					"contextPath": "/cmssmarteditwebservices"
+				},
+				{
+					"name": "cmswebservices",
+					"contextPath": "/cmswebservices"
+				},
+				{
+					"name": "previewwebservices",
+					"contextPath": "/previewwebservices"
+				},
+				{
+					"name": "permissionswebservices",
+					"contextPath": "/permissionswebservices"
+				},
+				{
+					"name": "oauth2",
+					"contextPath": "/authorizationserver"
+				},
+				{
+					"name": "personalizationsmartedit",
+					"contextPath": "/personalizationsmartedit"
+				},
+				{
+					"name": "personalizationwebservices",
+					"contextPath": "/personalizationwebservices"
+				},
+				{
+					"name": "personalizationpromotionssmartedit",
+					"contextPath": "/personalizationpromotionssmartedit"
+				},
+				{
+					"name": "personalizationsearchsmartedit",
+					"contextPath": "/personalizationsearchsmartedit"
+				}
+			]
+		}
+	]
+}
+
